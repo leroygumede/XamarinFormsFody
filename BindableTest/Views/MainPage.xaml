@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" prism:ViewModelLocator.AutowireViewModel="True" x:Class="BindableTest.Views.MainPage" Title="MainPage">
+    <StackLayout>
+        <ListView x:Name="QuestionnaireList" ItemsSource="{Binding QuestionnaireList}" IsGroupingEnabled="true">
+            <ListView.GroupHeaderTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout HeightRequest="60">
+                            <Label Text="{Binding Label.Name, Mode=TwoWay}" FontSize="Large" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.GroupHeaderTemplate>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="{Binding Label.Name, Mode=TwoWay}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
+                            <Switch IsToggled="{Binding IsVisible, Mode=TwoWay}" HorizontalOptions="End" VerticalOptions="CenterAndExpand" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button Text="test" Command="{Binding TestCommand}" />
+    </StackLayout>
+</ContentPage>
